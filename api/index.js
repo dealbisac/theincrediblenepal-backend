@@ -31,11 +31,14 @@ mongoose.connection.on("error", (err) => {
 });
 
 mongoose.connection.on("disconnected", () => {
-    console.log("Database disconnected successfully");
+    console.log("Database disconnected.");
 });
 
 
 //middlewares
+
+app.use(express.json());
+
 app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/hotels", hotelsRoute);
