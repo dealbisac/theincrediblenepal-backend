@@ -2,23 +2,23 @@ import React from 'react'
 import './SearchItem.css'
 import { Link } from 'react-router-dom';
 
-const SearchItem = () => {
+const SearchItem = ({item}) => {
     return (
         <div className='searchItem'>
             <img
-                src='http://hotelgreenvalley.com.np/wp-content/uploads/2019/10/kings-bed-hotel-green-valley-370x370.jpg'
-                alt='hotel'
+                src={item.photos[0]}
+                alt='hotel photo'
                 className='siImage'
             />
             <div className="siDesc">
-                <h1 className="siTitle">Nagarkot Hills Apartments</h1>
-                <span className="siDistance">2.5km from center</span>
+                <h1 className="siTitle">{item.name}</h1>
+                <span className="siDistance">{item.distance}</span>
                 <span className="siTaxiOp">Free airport taxi</span>
                 <span className="siSubtitle">
                     Excellent Apartment with mountain view.
                 </span>
                 <span className="siFeatures">
-                    Mountain view • 1 bathroom • 25m² 1 full bed
+                    {item.desc}
                 </span>
                 <span className="siCancelOp">Free cancellation </span>
                 <span className="siCancelOpSubtitle">
@@ -26,14 +26,14 @@ const SearchItem = () => {
                 </span>
             </div>
             <div className="siDetails">
-                <div className="siRating">
+                {item.rating && <div className="siRating">
                     <span>Excellent</span>
-                    <button>8.9</button>
-                </div>
+                    <button>{item.rating}</button>
+                </div>}
                 <div className="siDetailTexts">
-                    <span className="siPrice">$152</span>
+                    <span className="siPrice">${item.cheapestPrice}</span>
                     <span className="siTaxOp">Includes taxes and fees</span>
-                    <Link to='/hotels/nagarkot-apartment-hotel'>
+                    <Link to={`/hotels/${item._id}`}>
                         <button className="siCheckButton">See availability</button>
                     </Link>
                 </div>
