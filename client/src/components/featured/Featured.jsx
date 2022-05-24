@@ -4,7 +4,6 @@ import './Featured.css'
 
 const Featured = () => {
 
-    // eslint-disable-next-line
     const { data, loading, error } = useFetch(
         "/hotels/countByCity?cities=Kathmandu,Bhaktapur,Lalitpur"
     );
